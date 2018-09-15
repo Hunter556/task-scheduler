@@ -60,5 +60,6 @@ ipcRenderer.on('reply-on-load', (event, reply) => {
 ipcRenderer.on('reply-on-add', (event, id) => {
 
     addElementToList(id, task);
+    
 
 });
