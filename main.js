@@ -47,7 +47,7 @@ function connectionTodataBase() {
         database: "mydb"
     }, function (err) {
         if (err) {
-            console.log('error in changing database', err);
+            console.log('error in changing database..', err);
             return;
         }
     });
