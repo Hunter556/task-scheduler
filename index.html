@@ -1,51 +1,19 @@
-<!doctype>
-
-<html>
-
-
-
+</html>
 
 <head>
-
-<script src = "render.js"> </script>
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" />
+  <script src="render.js"></script>
+  <title>
+    To-do List
+  </title>
 </head>
 
-
 <body>
-
-
-<div>
-  <p>Add your task !</p>
-
-  <form onsubmit = "sendForm(event);">
-        <input type = "text" text = "hello" id = "task">
-        <input type = "submit" value = "add">
-  </form>
-  <button onclick = "clearTasks(event);">clear tasks</button>
-
-
-  
-
-</div>
-
-
-<div>
-<p>list of tasks:</p>
-
-
-
-
-<ul id = "tasks">
-
-</ul>
-
-</div>
-
-    
-
-
-
-
+  <input id="input" placeholder="What needs to be done?" onkeyup="sendForm(event);">
+  <ul id="tasks"></ul>
 </body>
+
+
 </html>

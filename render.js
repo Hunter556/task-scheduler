@@ -2,16 +2,10 @@ const ipcRenderer = require('electron').ipcRenderer;
 var task;
 
 function sendForm(event) {
-
-    event.preventDefault();
-    task = document.getElementById("task").value;
-    if (task === ''){
-        alert("Task must not be empty");
-    }
-    else {
+    if (event.keyCode == 13) {
+        task = document.getElementById("input").value;
         ipcRenderer.send('task-submission', task);
     }
-        
 
 }
 
@@ -29,27 +23,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function addElementToList(id, task) {
     var node = document.createElement("li");
-    var button = document.createElement("button");
-    var buttontext = document.createTextNode("del");
     var textnode = document.createTextNode(task);
-
     node.id = id;
-    
     node.appendChild(textnode);
-    button.appendChild(buttontext);
-    node.appendChild(button);
-    var list =  document.getElementById("tasks");
+    var list = document.getElementById("tasks");
     list.appendChild(node);
-    button.addEventListener('click', function(){
-        ipcRenderer.send('delete-task', id);
-        list.removeChild(document.getElementById(node.id));
-
-    }, false);
-}
-
-function removeElementFromList(){
+    node.onclick = 
+    function removeItem(e) {
+      
+      e.target.parentElement.removeChild(e.target);
+      ipcRenderer.send('delete-task', id);  
+    }
     
+
 }
+
 ipcRenderer.on('reply-on-load', (event, reply) => {
     for (i = 0; i < reply.length; i++) {
         var task = reply[i].task;
